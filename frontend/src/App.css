@@ -1,3 +1,7 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
 .App {
   text-align: center;
 }
@@ -11,6 +15,10 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+th {
+  border-bottom: 4px solid #000000;
+  font-weight: bold;
 }
 
 .App-header {
@@ -28,6 +36,12 @@
   color: #61dafb;
 }
 
+#upload-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -35,6 +49,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+.upload-button{
+  justify-Content: buttonPosition; 
 }
 .submit-form{
   align-items: center;

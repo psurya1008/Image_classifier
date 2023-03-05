@@ -5,7 +5,6 @@ const multer = require("multer");
 const fs = require("fs");
 const cors=require("cors");
 
-
 // Create a new Express app
 const app = express();
 
@@ -24,7 +23,14 @@ const storage = multer.diskStorage({
     cb(null, fileName + ".jpg");
   },
 });
-const upload = multer({ storage: storage });
+
+const upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 250 * 1024, // 2 MB
+  },
+});
+
 app.post("/upload", upload.single("file"), async (req, res) => {
   try {
     // Get the uploaded file name
@@ -50,4 +56,5 @@ app.listen(PORT, () => {
 });
 
 
-process.env.GOOGLE_APPLICATION_CREDENTIALS = './awesome-destiny-378211-957cb723ebf3.json';
+
+process.env.GOOGLE_APPLICATION_CREDENTIALS = '../../driven-tape-379011-78322213a563.json';
