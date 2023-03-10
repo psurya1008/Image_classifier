@@ -48,13 +48,16 @@ function App() {
   return (
     <div className="bg-gray-100 flex flex-col items-center justify-center">
 
-      {!disabled?(<form className="flex flex-col items-center justify-center h-screen" onSubmit={handleSubmit}>
+      {!disabled?(<div>
+        <h1 class="text-4xl font-bold text-center text-black-800 mb-8">Image Classifier</h1>
+      <form className="flex flex-col items-center justify-center h-screen" onSubmit={handleSubmit}>
         <input className="border-2 border-gray-400 py-2 px-4 rounded-lg" type="file" onChange={handleFileChange} />
         {error && <div className="text-danger">{error}</div>}
         <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" disabled={!file}>
           Upload
         </button>
-      </form>): (
+      </form>
+      </div>): (
         <div className="flex flex-col items-center justify-center h-screen">
        <table className="table-auto border-2 border-gray-400">
        <thead>
