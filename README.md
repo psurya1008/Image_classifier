@@ -1,5 +1,5 @@
 # Image_classifier
-App.js contains the code for the frontend
-server.js for the backend
-The google credentials will not be present in this repo due to security issues.
-Refer the screenshots added for the end result
+1.App.js contains the code for the frontend
+2.server.js for the backend
+3.The google credentials will not be present in this repo due to security issues.
+4.Refer the screenshots added for the end result
