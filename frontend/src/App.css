@@ -41,7 +41,10 @@ th {
   justify-content: center;
   align-items: center;
 }
-
+#photo {
+height:300px;
+width:300px;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

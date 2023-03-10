@@ -5,15 +5,13 @@ const multer = require("multer");
 const fs = require("fs");
 const cors=require("cors");
 
-// Create a new Express app
 const app = express();
 
-// Set up middleware to parse incoming request bodies
 app.use(express.json());
 app.use(cors())
 app.use(express.urlencoded({ extended: false }));
 
-// Set up a route to handle file uploads
+//a route to handle file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "./uploads/");
@@ -33,7 +31,7 @@ const upload = multer({
 
 app.post("/upload", upload.single("file"), async (req, res) => {
   try {
-    // Get the uploaded file name
+    // Getting the uploaded file name
     const fileName = req.file.filename;
 
     // Read the file data and pass it to the Google Cloud Vision API for analysis
@@ -49,7 +47,6 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   }
 });
 
-// Start the server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
@@ -57,4 +54,4 @@ app.listen(PORT, () => {
 
 
 
-process.env.GOOGLE_APPLICATION_CREDENTIALS = '../../driven-tape-379011-78322213a563.json';
+process.env.GOOGLE_APPLICATION_CREDENTIALS = '../../driven-tape-379011-ed97fed37298.json';

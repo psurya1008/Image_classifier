@@ -11,7 +11,7 @@ function App() {
     const selectedFile = event.target.files[0];
     const fileSizeInMB = selectedFile.size / (250 * 1024);
     if (fileSizeInMB > 1) {
-      setError("File size should be less than 2MB");
+      setError("File size should be less than 250 KB");
       setFile(null);
     } else {
       setFile(selectedFile);
@@ -42,6 +42,7 @@ function App() {
   };
   const clear =()=>{
     setDisabled(false);
+    setFile(null);
   }
 
   return (
@@ -54,6 +55,7 @@ function App() {
           Upload
         </button>
       </form>): (
+        <div className="flex flex-col items-center justify-center h-screen">
        <table className="table-auto border-2 border-gray-400">
        <thead>
          <tr>
@@ -65,7 +67,7 @@ function App() {
        <tbody>
          <tr>
            <td className="border px-4 py-2">
-             {file && <img className="max-w-full h-auto" src={URL.createObjectURL(file)} alt="Uploaded Image" />}
+             {file && <img id="photo" className="max-w-full h-auto" src={URL.createObjectURL(file)} alt="Uploaded Image" />}
            </td>
            <td className="border px-4 py-2">{tags.length > 0 ? tags[0] : "-"}</td>
            <td className="border px-4 py-2">
@@ -76,8 +78,8 @@ function App() {
          </tr>
        </tbody>
      </table>
-     
-     
+     <button  className="mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" onClick={clear}>clear</button>
+     </div>     
       )}
       
       
