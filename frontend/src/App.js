@@ -33,16 +33,26 @@ function App() {
         method: "POST",
         body: formData,
       });
+      if(response.status==400){
+        setError("Inappropriate image choose a different one")
+        return
+      }
+      console.log(response);
       const { tags } = await response.json();
       setTags(tags);
       setDisabled(true);
     } catch (error) {
+      
+
       console.error(error);
+      console.log(error);
+
     }
   };
   const clear =()=>{
     setDisabled(false);
     setFile(null);
+    setError(null);
   }
 
   return (

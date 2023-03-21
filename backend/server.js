@@ -36,6 +36,21 @@ app.post("/upload", upload.single("file"), async (req, res) => {
 
     // Read the file data and pass it to the Google Cloud Vision API for analysis
     const visionClient = new ImageAnnotatorClient();
+    const [detect]= await visionClient.safeSearchDetection(`./uploads/${fileName}`);
+    const violence=detect.safeSearchAnnotation?.violence||'UNKOWN';
+    const adult=detect.safeSearchAnnotation?.adult||'UNKOWN';
+    console.log(adult);
+
+    console.log(violence);
+    if(
+      adult==="LIKELY"||
+      adult==="VERY_LIKELY"||
+      violence==="LIKELY"||
+      violence==="VERY_LIKELY"
+    ){
+      fs.unlinkSync(`./uploads/${fileName}`);
+      return res.status(400).json({ error: "The uploaded image is not safe" });
+    }
     const [result] = await visionClient.labelDetection(`./uploads/${fileName}`);
     const labels = result.labelAnnotations.map((label) => label.description);
 
